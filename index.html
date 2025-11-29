@@ -50,10 +50,142 @@
             50% { background-position: 100% 0%, 0% 100%, 50% 50%; }
         }
 
+        /* Navigation Bar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95) 0%, rgba(15, 15, 15, 0.95) 100%);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            background: linear-gradient(135deg, #d4af37 0%, #c0c0c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.5em;
+            font-weight: 700;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: #c0c0c0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #d4af37, #c0c0c0);
+            transition: width 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #d4af37;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Sidebar Navigation */
+        .sidebar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .sidebar-item {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .sidebar-item:hover {
+            transform: translateX(-5px) scale(1.1);
+            border-color: rgba(212, 175, 55, 0.6);
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.9) 0%, rgba(35, 35, 35, 0.9) 100%);
+            box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+        }
+
+        .sidebar-item.active {
+            border-color: #d4af37;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(192, 192, 192, 0.1) 100%);
+        }
+
+        .sidebar-item .icon {
+            font-size: 1.5em;
+            color: #d4af37;
+        }
+
+        .sidebar-item .tooltip {
+            position: absolute;
+            right: 60px;
+            background: rgba(20, 20, 20, 0.95);
+            color: #d4af37;
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .sidebar-item:hover .tooltip {
+            opacity: 1;
+            transform: translateX(-5px);
+        }
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
+            padding-top: 100px;
             position: relative;
             z-index: 1;
         }
@@ -558,6 +690,28 @@
         }
 
         @media (max-width: 768px) {
+            .navbar {
+                padding: 10px 0;
+            }
+
+            .nav-menu {
+                gap: 15px;
+                font-size: 0.9em;
+            }
+
+            .sidebar {
+                right: 10px;
+            }
+
+            .sidebar-item {
+                width: 45px;
+                height: 45px;
+            }
+
+            .sidebar-item .tooltip {
+                display: none;
+            }
+
             header h1 {
                 font-size: 2em;
             }
@@ -573,17 +727,59 @@
             .stats {
                 flex-direction: column;
             }
+
+            .container {
+                padding-top: 80px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">🚀 CRM هوشمند</div>
+            <ul class="nav-menu">
+                <li><a href="#home">خانه</a></li>
+                <li><a href="#how-it-works">نحوه کار</a></li>
+                <li><a href="#features">ویژگی‌ها</a></li>
+                <li><a href="#automation">اتوماسیون</a></li>
+                <li><a href="#demo">دمو</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar">
+        <div class="sidebar-item" data-section="home" title="خانه">
+            <span class="icon">🏠</span>
+            <span class="tooltip">خانه</span>
+        </div>
+        <div class="sidebar-item" data-section="how-it-works" title="نحوه کار">
+            <span class="icon">⚙️</span>
+            <span class="tooltip">نحوه کار</span>
+        </div>
+        <div class="sidebar-item" data-section="features" title="ویژگی‌ها">
+            <span class="icon">✨</span>
+            <span class="tooltip">ویژگی‌ها</span>
+        </div>
+        <div class="sidebar-item" data-section="automation" title="اتوماسیون">
+            <span class="icon">🔄</span>
+            <span class="tooltip">اتوماسیون</span>
+        </div>
+        <div class="sidebar-item" data-section="demo" title="دمو">
+            <span class="icon">🎬</span>
+            <span class="tooltip">دمو</span>
+        </div>
+    </div>
+
     <div class="container">
-        <header>
+        <header id="home">
             <h1>🚀 سیستم CRM هوشمند</h1>
             <p>راهکار کامل برای مدیریت خودکار مشتریان و افزایش فروش</p>
         </header>
 
-        <section class="section">
+        <section class="section" id="how-it-works">
             <h2>📋 سیستم CRM چگونه کار می‌کند؟</h2>
             <p style="font-size: 1.2em; line-height: 2; margin-bottom: 20px;">
                 سیستم CRM شما یک دستیار هوشمند است که تمام فرآیندهای مدیریت مشتری را به صورت <strong>خودکار</strong> انجام می‌دهد. 
@@ -618,7 +814,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="features">
             <h2>✨ مزایا و ویژگی‌ها</h2>
             
             <div class="features-grid">
@@ -669,7 +865,7 @@
             </ul>
         </section>
 
-        <section class="section">
+        <section class="section" id="automation">
             <h2>🔄 نمونه‌های اتوماسیون</h2>
             
             <div class="demo-scenario">
@@ -728,7 +924,7 @@
             </div>
         </section>
 
-        <section class="section">
+        <section class="section" id="demo">
             <h2>🎬 دمو واقعی سیستم</h2>
             
             <!-- دمو تعاملی -->
@@ -1049,6 +1245,58 @@
             this.style.borderColor = 'rgba(212, 175, 55, 0.3)';
             this.style.boxShadow = 'none';
         });
+
+        // Smooth Scroll برای Navigation
+        document.querySelectorAll('.nav-menu a, .sidebar-item').forEach(item => {
+            item.addEventListener('click', function(e) {
+                e.preventDefault();
+                let targetId;
+                
+                if (this.tagName === 'A') {
+                    targetId = this.getAttribute('href').substring(1);
+                } else {
+                    targetId = this.getAttribute('data-section');
+                }
+                
+                const targetSection = document.getElementById(targetId);
+                if (targetSection) {
+                    const offset = 80; // ارتفاع navbar
+                    const targetPosition = targetSection.offsetTop - offset;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Highlight active section در sidebar
+        const sections = document.querySelectorAll('.section, header[id]');
+        const sidebarItems = document.querySelectorAll('.sidebar-item');
+
+        function updateActiveSection() {
+            let current = '';
+            const scrollPos = window.pageYOffset + 150;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarItems.forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('data-section') === current) {
+                    item.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveSection);
+        updateActiveSection(); // برای بارگذاری اولیه
     </script>
 </body>
 </html>
