@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سیستم CRM هوشمند - ارائه حرفه‌ای</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #0a0a0a;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(192, 192, 192, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(205, 127, 50, 0.1) 0%, transparent 50%);
+            color: #e0e0e0;
+            line-height: 1.6;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated background particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(2px 2px at 20% 30%, rgba(212, 175, 55, 0.3), transparent),
+                radial-gradient(2px 2px at 60% 70%, rgba(192, 192, 192, 0.3), transparent),
+                radial-gradient(1px 1px at 50% 50%, rgba(205, 127, 50, 0.3), transparent);
+            background-size: 200% 200%;
+            animation: particleMove 20s ease infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes particleMove {
+            0%, 100% { background-position: 0% 0%, 100% 100%, 50% 50%; }
+            50% { background-position: 100% 0%, 0% 100%, 50% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        header {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.95) 0%, rgba(20, 20, 20, 0.95) 100%);
+            padding: 50px 20px;
+            text-align: center;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 40px rgba(212, 175, 55, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            animation: shine 3s infinite;
+        }
+
+        @keyframes shine {
+            0% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) translateY(100%) rotate(45deg); }
+        }
+
+        header h1 {
+            background: linear-gradient(135deg, #d4af37 0%, #c0c0c0 50%, #cd7f32 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 3em;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+            position: relative;
+            z-index: 1;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            color: #c0c0c0;
+            font-size: 1.3em;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .section {
+            background: linear-gradient(135deg, rgba(26, 26, 26, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%);
+            padding: 50px;
+            margin-bottom: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.05),
+                inset 0 1px 0 rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 
+                0 20px 50px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .section h2 {
+            background: linear-gradient(135deg, #d4af37 0%, #c0c0c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 25px;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 15px;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4af37);
+        }
+
+        .section h3 {
+            color: #c0c0c0;
+            font-size: 1.6em;
+            margin: 30px 0 20px 0;
+            font-weight: 600;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 35px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.8) 0%, rgba(25, 25, 25, 0.8) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .feature-card:hover::before {
+            left: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+        }
+
+        .feature-card h4 {
+            background: linear-gradient(135deg, #d4af37 0%, #c0c0c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-size: 1.4em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: #b0b0b0;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-list li {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.6) 0%, rgba(25, 25, 25, 0.6) 100%);
+            padding: 18px 25px;
+            margin: 12px 0;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-right: 3px solid #d4af37;
+            font-size: 1.1em;
+            color: #d0d0d0;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .benefits-list li::before {
+            content: "✓ ";
+            color: #d4af37;
+            font-weight: bold;
+            font-size: 1.4em;
+            margin-left: 10px;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.5);
+        }
+
+        .benefits-list li:hover {
+            transform: translateX(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+            background: linear-gradient(135deg, rgba(40, 40, 40, 0.8) 0%, rgba(35, 35, 35, 0.8) 100%);
+        }
+
+        .flowchart-container {
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(15, 15, 15, 0.8) 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin: 25px 0;
+            text-align: center;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .flow-step {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.9) 0%, rgba(25, 25, 25, 0.9) 100%);
+            padding: 25px 35px;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.1);
+            min-width: 280px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .flow-step:hover {
+            transform: scale(1.05);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 
+                0 15px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.2);
+        }
+
+        .flow-step:not(:last-child)::after {
+            content: "↓";
+            position: absolute;
+            bottom: -35px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5em;
+            color: #d4af37;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-10px); }
+        }
+
+        .flow-step h4 {
+            background: linear-gradient(135deg, #d4af37 0%, #c0c0c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .flow-step p {
+            color: #b0b0b0;
+        }
+
+        .demo-scenario {
+            background: linear-gradient(135deg, rgba(30, 30, 30, 0.7) 0%, rgba(25, 25, 25, 0.7) 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-right: 4px solid #d4af37;
+            margin: 25px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+        }
+
+        .demo-scenario:hover {
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .demo-scenario h4 {
+            background: linear-gradient(135deg, #d4af37 0%, #c0c0c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 1.3em;
+        }
+
+        .demo-step {
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(15, 15, 15, 0.8) 100%);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-right: 3px solid #d4af37;
+            transition: all 0.3s;
+        }
+
+        .demo-step:hover {
+            transform: translateX(-5px);
+            border-color: rgba(212, 175, 55, 0.4);
+        }
+
+        .demo-step strong {
+            background: linear-gradient(135deg, #d4af37 0%, #c0c0c0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 600;
+        }
+
+        .demo-step p, .demo-step ul {
+            color: #c0c0c0;
+            margin-top: 10px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(192, 192, 192, 0.1) 50%, rgba(205, 127, 50, 0.15) 100%);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            color: #e0e0e0;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            text-align: center;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.4),
+                0 0 40px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(212, 175, 55, 0.1), transparent);
+            animation: shine 4s infinite;
+        }
+
+        .highlight-box h3 {
+            color: #d4af37;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(20, 20, 20, 0.5);
+            border-radius: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            min-width: 150px;
+            transition: all 0.3s;
+        }
+
+        .stat-item:hover {
+            transform: scale(1.1);
+            border-color: rgba(212, 175, 55, 0.5);
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .stat-number {
+            font-size: 3em;
+            font-weight: 700;
+            display: block;
+            background: linear-gradient(135deg, #d4af37 0%, #c0c0c0 50%, #cd7f32 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.5);
+        }
+
+        .stat-label {
+            font-size: 1.2em;
+            color: #c0c0c0;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: #c0c0c0;
+            margin-top: 50px;
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.8) 0%, rgba(15, 15, 15, 0.8) 100%);
+            border-radius: 20px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        /* Form Styles */
+        form {
+            background: linear-gradient(135deg, rgba(25, 25, 25, 0.9) 0%, rgba(20, 20, 20, 0.9) 100%);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+        }
+
+        label {
+            color: #d4af37 !important;
+            text-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"] {
+            background: rgba(15, 15, 15, 0.8) !important;
+            border: 1px solid rgba(212, 175, 55, 0.3) !important;
+            color: #e0e0e0 !important;
+            transition: all 0.3s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus {
+            border-color: rgba(212, 175, 55, 0.6) !important;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3) !important;
+            outline: none;
+        }
+
+        input::placeholder {
+            color: #666 !important;
+        }
+
+        small {
+            color: #999 !important;
+        }
+
+        button[type="submit"] {
+            background: linear-gradient(135deg, #d4af37 0%, #c0c0c0 50%, #cd7f32 100%) !important;
+            border: none !important;
+            box-shadow: 
+                0 10px 30px rgba(212, 175, 55, 0.4),
+                0 0 20px rgba(212, 175, 55, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+            position: relative;
+            overflow: hidden;
+        }
+
+        button[type="submit"]::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shine 2s infinite;
+        }
+
+        button[type="submit"]:hover {
+            transform: scale(1.05) !important;
+            box-shadow: 
+                0 15px 40px rgba(212, 175, 55, 0.5),
+                0 0 30px rgba(212, 175, 55, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+        }
+
+        #resultMessage.success {
+            background: linear-gradient(135deg, rgba(40, 167, 69, 0.2) 0%, rgba(40, 167, 69, 0.1) 100%);
+            border: 2px solid rgba(40, 167, 69, 0.5);
+            color: #001b00;
+        }
+
+        #resultMessage.error {
+            background: linear-gradient(135deg, rgba(220, 53, 69, 0.2) 0%, rgba(220, 53, 69, 0.1) 100%);
+            border: 2px solid rgba(220, 53, 69, 0.5);
+            color: #ff6b6b;
+        }
+
+        #resultMessage.loading {
+            background: linear-gradient(135deg, rgba(23, 162, 184, 0.2) 0%, rgba(23, 162, 184, 0.1) 100%);
+            border: 2px solid rgba(23, 162, 184, 0.5);
+            color: #5bc0de;
+        }
+
+        #runWorkflowBtn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none !important;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+            
+            .section {
+                padding: 30px 20px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 سیستم CRM هوشمند</h1>
+            <p>راهکار کامل برای مدیریت خودکار مشتریان و افزایش فروش</p>
+        </header>
+
+        <section class="section">
+            <h2>📋 سیستم CRM چگونه کار می‌کند؟</h2>
+            <p style="font-size: 1.2em; line-height: 2; margin-bottom: 20px;">
+                سیستم CRM شما یک دستیار هوشمند است که تمام فرآیندهای مدیریت مشتری را به صورت <strong>خودکار</strong> انجام می‌دهد. 
+                سیستم به صورت خودکار تمام لیدها را از <strong>CRM شرکت</strong> فراخوانی می‌کند، بررسی می‌کند و برای هر مشتری که نیاز به پیگیری دارد، 
+                ایمیل پیگیری ارسال می‌کند و تماس را در تقویم شما ثبت می‌کند. دیگر نیازی نیست نگران فراموش کردن تماس با مشتریان باشید.
+            </p>
+            
+            <div class="flowchart-container">
+                <h3 style="color: #d4af37; margin-bottom: 20px;">فرآیند کار سیستم</h3>
+                <div class="flowchart">
+                    <div class="flow-step">
+                        <h4>1️⃣ فراخوانی از CRM</h4>
+                        <p>سیستم به صورت خودکار تمام لیدها را از CRM شرکت می‌خواند</p>
+                    </div>
+                    <div class="flow-step">
+                        <h4>2️⃣ بررسی تمام مشتریان</h4>
+                        <p>سیستم وضعیت تمام مشتریان را بررسی می‌کند</p>
+                    </div>
+                    <div class="flow-step">
+                        <h4>3️⃣ تصمیم‌گیری هوشمند</h4>
+                        <p>برای هر مشتری که نیاز به پیگیری دارد، سیستم تصمیم می‌گیرد</p>
+                    </div>
+                    <div class="flow-step">
+                        <h4>4️⃣ ارسال ایمیل پیگیری</h4>
+                        <p>ایمیل پیگیری به ایمیل مشتری ارسال می‌شود</p>
+                    </div>
+                    <div class="flow-step">
+                        <h4>5️⃣ ثبت در تقویم</h4>
+                        <p>تماس برای 7 روز بعد در تقویم شما ثبت می‌شود</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>✨ مزایا و ویژگی‌ها</h2>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h4>🤖 خودکارسازی کامل</h4>
+                    <p>تمام فرآیندها به صورت خودکار انجام می‌شود. دیگر نیازی به کار دستی نیست.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>📧 ارسال خودکار ایمیل</h4>
+                    <p>سیستم به صورت خودکار ایمیل‌های پیگیری و یادآوری را ارسال می‌کند.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>📅 مدیریت تقویم</h4>
+                    <p>رویدادهای مهم به صورت خودکار در تقویم شما ثبت می‌شوند.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>🔔 یادآوری هوشمند</h4>
+                    <p>سیستم به شما یادآوری می‌کند چه زمانی باید با کدام مشتری تماس بگیرید.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>📊 گزارش‌دهی کامل</h4>
+                    <p>گزارش‌های دقیق از تمام فعالیت‌ها و وضعیت مشتریان در دسترس است.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h4>🔧 قابل توسعه</h4>
+                    <p>سیستم به راحتی قابل توسعه است و می‌توانید ویژگی‌های جدید اضافه کنید.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎯 خروجی‌های سیستم</h2>
+            
+            <ul class="benefits-list">
+                <li>ارسال خودکار ایمیل به مشتریان</li>
+                <li>ثبت خودکار رویداد در تقویم</li>
+                <li>یادآوری خودکار برای تیم فروش</li>
+                <li>به‌روزرسانی خودکار وضعیت مشتری</li>
+                <li>گزارش‌های تحلیلی از عملکرد فروش</li>
+                <li>مدیریت خودکار پیگیری‌ها</li>
+                <li>ثبت خودکار تمام فعالیت‌ها</li>
+                <li>اولویت‌بندی خودکار مشتریان</li>
+            </ul>
+        </section>
+
+        <section class="section">
+            <h2>🔄 نمونه‌های اتوماسیون</h2>
+            
+            <div class="demo-scenario">
+                <h4>📊 سناریو 1: بررسی خودکار تمام مشتریان</h4>
+                <div class="demo-step">
+                    <strong>شروع:</strong> سیستم به صورت خودکار تمام لیدها را از CRM شرکت فراخوانی می‌کند
+                </div>
+                <div class="demo-step">
+                    <strong>اتوماسیون:</strong> برای هر مشتری که نیاز به پیگیری دارد:
+                    <ul style="margin-top: 10px; padding-right: 20px;">
+                        <li>سیستم وضعیت مشتری را بررسی می‌کند</li>
+                        <li>اگر بیش از 7 روز از آخرین تماس گذشته باشد</li>
+                        <li>ایمیل پیگیری به ایمیل مشتری ارسال می‌شود</li>
+                        <li>تماس برای 7 روز بعد در تقویم شما ثبت می‌شود</li>
+                    </ul>
+                </div>
+                <div class="demo-step">
+                    <strong>نتیجه:</strong> تمام مشتریان به صورت خودکار بررسی می‌شوند و هیچ کس فراموش نمی‌شود
+                </div>
+            </div>
+
+            <div class="demo-scenario">
+                <h4>📧 سناریو 2: ارسال ایمیل پیگیری</h4>
+                <div class="demo-step">
+                    <strong>شرط:</strong> برای مشتریانی که بیش از 7 روز از آخرین تماس آن‌ها گذشته است
+                </div>
+                <div class="demo-step">
+                    <strong>اتوماسیون:</strong> سیستم به صورت خودکار:
+                    <ul style="margin-top: 10px; padding-right: 20px;">
+                        <li>ایمیل پیگیری حرفه‌ای به ایمیل مشتری ارسال می‌کند</li>
+                        <li>مشتری مطلع می‌شود که با او تماس گرفته خواهد شد</li>
+                        <li>وضعیت مشتری در CRM به‌روز می‌شود</li>
+                    </ul>
+                </div>
+                <div class="demo-step">
+                    <strong>نتیجه:</strong> تمام مشتریان به موقع پیام دریافت می‌کنند و ارتباط حفظ می‌شود
+                </div>
+            </div>
+
+            <div class="demo-scenario">
+                <h4>📅 سناریو 3: ثبت خودکار در تقویم</h4>
+                <div class="demo-step">
+                    <strong>زمان‌بندی:</strong> برای هر مشتری که نیاز به پیگیری دارد
+                </div>
+                <div class="demo-step">
+                    <strong>اتوماسیون:</strong> سیستم به صورت خودکار:
+                    <ul style="margin-top: 10px; padding-right: 20px;">
+                        <li>رویداد تماس را برای 7 روز بعد در تقویم شما ایجاد می‌کند</li>
+                        <li>جزئیات کامل مشتری (نام، ایمیل، وضعیت) در رویداد ثبت می‌شود</li>
+                        <li>یادآوری قبل از زمان تماس برای شما ارسال می‌شود</li>
+                    </ul>
+                </div>
+                <div class="demo-step">
+                    <strong>نتیجه:</strong> همیشه می‌دانید چه زمانی با چه کسی تماس بگیرید و هیچ تماسی فراموش نمی‌شود
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>🎬 دمو واقعی سیستم</h2>
+            
+            <!-- دمو تعاملی -->
+            <div class="demo-scenario" style="margin-bottom: 30px;">
+                <h4>🚀 دمو زنده - اجرای واقعی سیستم</h4>
+                <p style="margin-bottom: 20px; color: #c0c0c0; font-size: 1.1em;">
+                    روی دکمه زیر کلیک کنید تا workflow اجرا شود. سیستم به صورت خودکار <strong>تمام لیدها را از CRM شرکت</strong> فراخوانی می‌کند، 
+                    تمام مشتریان را بررسی می‌کند و برای هر مشتری که نیاز به پیگیری دارد، ایمیل پیگیری ارسال می‌کند و تماس را در تقویم شما ثبت می‌کند:
+                </p>
+                
+              
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <div style="margin-bottom: 25px;">
+                        <label style="display: block; margin-bottom: 12px; font-weight: 600; color: #d4af37; font-size: 1.1em;">آدرس Webhook n8n:</label>
+                        <input type="text" id="webhookUrl" 
+                               placeholder="https://azizizahra.app.n8n.cloud/webhook/crm-agent-step1" 
+                               value="https://azizizahra.app.n8n.cloud/webhook/crm-agent-step1"
+                               style="width: 100%; max-width: 600px; padding: 15px; 
+                                      background: rgba(15, 15, 15, 0.8); 
+                                      border: 1px solid rgba(212, 175, 55, 0.3); 
+                                      border-radius: 12px; 
+                                      font-size: 14px; 
+                                      color: #e0e0e0;
+                                      text-align: center;
+                                      transition: all 0.3s;">
+                        <small style="color: #999; display: block; margin-top: 8px;">آدرس webhook workflow خود را از n8n کپی کنید</small>
+                    </div>
+                    
+                    <button type="button" id="runWorkflowBtn" 
+                            style="padding: 20px 60px; 
+                                   background: linear-gradient(135deg, #d4af37 0%, #c0c0c0 50%, #cd7f32 100%); 
+                                   color: #0a0a0a; 
+                                   border: none; 
+                                   border-radius: 15px; 
+                                   font-size: 20px; 
+                                   font-weight: 700; 
+                                   cursor: pointer; 
+                                   transition: all 0.3s;
+                                   box-shadow: 
+                                       0 10px 30px rgba(212, 175, 55, 0.4),
+                                       0 0 20px rgba(212, 175, 55, 0.2),
+                                       inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                                   position: relative;
+                                   overflow: hidden;
+                                   min-width: 250px;">
+                        <span id="btnText">🚀 اجرای Workflow</span>
+                    </button>
+                </div>
+                
+                <div id="resultMessage" style="display: none; margin-top: 30px; padding: 30px; border-radius: 15px; font-size: 1.05em; line-height: 1.8;"></div>
+                
+                <div id="workflowOutput" style="display: none; margin-top: 30px; padding: 30px; 
+                                                background: linear-gradient(135deg, rgba(20, 20, 20, 0.9) 0%, rgba(15, 15, 15, 0.9) 100%);
+                                                border: 1px solid rgba(212, 175, 55, 0.3);
+                                                border-radius: 15px;">
+                    <h4 style="color: #d4af37; margin-bottom: 20px; font-size: 1.3em;">📊 خروجی Workflow:</h4>
+                    <div id="outputContent" style="color: #c0c0c0;"></div>
+                </div>
+            </div>
+            
+            <!-- سناریوی توضیحی -->
+            <div class="demo-scenario" style="background: rgba(212, 175, 55, 0.1); border-right-color: #d4af37;">
+                <h4 style="color: #d4af37;">📋 سناریوی اجرای کامل</h4>
+                
+                <div class="demo-step">
+                    <strong>مرحله 1 - فراخوانی از CRM:</strong>
+                    <p style="margin-top: 10px;">سیستم به صورت خودکار تمام لیدها را از CRM شرکت (Airtable) فراخوانی می‌کند. 
+                    برای مثال: 10 مشتری در CRM وجود دارد که آخرین تماس با آن‌ها بیش از 7 روز پیش بوده است.</p>
+                </div>
+                
+                <div class="demo-step">
+                    <strong>مرحله 2 - بررسی و پردازش:</strong>
+                    <ul style="margin-top: 10px; padding-right: 20px;">
+                        <li>✅ سیستم تمام مشتریان را بررسی می‌کند</li>
+                        <li>✅ برای هر مشتری که بیش از 7 روز از آخرین تماس گذشته است</li>
+                        <li>✅ ایمیل پیگیری به ایمیل مشتری ارسال می‌شود</li>
+                        <li>✅ رویداد تماس برای 7 روز بعد در تقویم شما ثبت می‌شود</li>
+                        <li>✅ وضعیت مشتری در CRM به‌روز می‌شود</li>
+                        <li>✅ تمام اطلاعات در سیستم ثبت می‌شود</li>
+                    </ul>
+                </div>
+                
+                <div class="demo-step">
+                    <strong>مرحله 3 - نتیجه:</strong>
+                    <p style="margin-top: 10px;">
+                        <strong>تمام مشتریان:</strong> مشتریانی که نیاز به پیگیری داشتند، ایمیل دریافت کرده‌اند<br>
+                        <strong>شما:</strong> تمام تماس‌های لازم برای 7 روز بعد در تقویم شما ثبت شده است<br>
+                        <strong>سیستم:</strong> تمام اطلاعات به‌روز و آماده گزارش‌دهی است<br>
+                        <strong>نتیجه:</strong> هیچ مشتری فراموش نمی‌شود و تمام پیگیری‌ها به صورت خودکار انجام می‌شود
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="highlight-box">
+            <h3>💡 چرا این سیستم برای شما مناسب است؟</h3>
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">خودکار</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">24/7</span>
+                    <span class="stat-label">در دسترس</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">قابل توسعه</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">✓</span>
+                    <span class="stat-label">قابل اعتماد</span>
+                </div>
+            </div>
+        </div>
+
+      
+
+        <footer>
+            <p style="font-size: 1.2em; margin-bottom: 10px;">آماده برای شروع؟</p>
+            <p>این سیستم آماده است تا فروش شما را متحول کند</p>
+        </footer>
+    </div>
+
+    <script>
+        document.getElementById('runWorkflowBtn').addEventListener('click', async function() {
+            const btn = document.getElementById('runWorkflowBtn');
+            const btnText = document.getElementById('btnText');
+            const resultDiv = document.getElementById('resultMessage');
+            const outputDiv = document.getElementById('workflowOutput');
+            const outputContent = document.getElementById('outputContent');
+            const webhookUrl = document.getElementById('webhookUrl').value.trim();
+            
+            if (!webhookUrl) {
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'error';
+                resultDiv.innerHTML = '<strong>❌ خطا:</strong> لطفاً آدرس webhook را وارد کنید';
+                return;
+            }
+            
+            // نمایش حالت بارگذاری
+            btn.disabled = true;
+            btnText.textContent = '⏳ در حال اجرا...';
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'loading';
+            resultDiv.innerHTML = '<strong>⏳ در حال اجرای workflow...</strong><br>سیستم در حال فراخوانی تمام لیدها از CRM شرکت و بررسی تمام مشتریان است. لطفاً صبر کنید...';
+            outputDiv.style.display = 'none';
+            
+            try {
+                // ارسال درخواست POST به webhook (بدون ارسال داده - workflow خودش از Airtable می‌خواند)
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json',
+                    },
+                    mode: 'cors', // صریحاً CORS را فعال می‌کنیم
+                    credentials: 'omit', // برای جلوگیری از مشکلات CORS
+                    body: JSON.stringify({}) // ارسال body خالی - workflow خودش داده می‌گیرد
+                });
+                
+                if (response.ok) {
+                    // دریافت خروجی workflow
+                    const data = await response.json().catch(async () => {
+                        // اگر JSON نبود، متن را برمی‌گرداند
+                        const text = await response.text();
+                        return { message: text, raw: true };
+                    });
+                    
+                    resultDiv.className = 'success';
+                    resultDiv.innerHTML = `
+                        <strong>✅ موفق! Workflow با موفقیت اجرا شد</strong><br><br>
+                        <strong>کارهایی که انجام شد:</strong><br>
+                        ✅ تمام لیدها از CRM شرکت (Airtable) فراخوانی شد<br>
+                        ✅ تمام مشتریان بررسی شدند<br>
+                        ✅ برای مشتریانی که نیاز به پیگیری داشتند:<br>
+                        &nbsp;&nbsp;&nbsp;• ایمیل پیگیری به ایمیل مشتری ارسال شد<br>
+                        &nbsp;&nbsp;&nbsp;• تماس برای 7 روز بعد در تقویم شما ثبت شد<br>
+                        ✅ وضعیت مشتریان در CRM به‌روز شد<br>
+                        ✅ تمام اطلاعات در سیستم ثبت شد<br><br>
+                        <small>لطفاً ایمیل و تقویم خود را بررسی کنید!</small>
+                    `;
+                    
+                    // نمایش خروجی workflow
+                    outputDiv.style.display = 'block';
+                    if (data.raw) {
+                        outputContent.innerHTML = `<pre style="color: #c0c0c0; white-space: pre-wrap; word-wrap: break-word;">${data.message}</pre>`;
+                    } else {
+                        // فرمت کردن خروجی JSON
+                        let outputHtml = '<div style="color: #c0c0c0;">';
+                        
+                        if (Array.isArray(data)) {
+                            outputHtml += '<strong>تعداد رکوردها:</strong> ' + data.length + '<br><br>';
+                            data.forEach((item, index) => {
+                                outputHtml += `<div style="margin-bottom: 20px; padding: 15px; background: rgba(15, 15, 15, 0.5); border-radius: 10px; border-right: 3px solid #d4af37;">`;
+                                outputHtml += `<strong style="color: #d4af37;">رکورد ${index + 1}:</strong><br>`;
+                                outputHtml += formatData(item);
+                                outputHtml += '</div>';
+                            });
+                        } else {
+                            outputHtml += formatData(data);
+                        }
+                        
+                        outputHtml += '</div>';
+                        outputContent.innerHTML = outputHtml;
+                    }
+                } else {
+                    const errorText = await response.text().catch(() => '');
+                    throw new Error(`خطا: ${response.status} ${response.statusText}${errorText ? '<br>' + errorText : ''}`);
+                }
+            } catch (error) {
+                resultDiv.className = 'error';
+                
+                // تشخیص نوع خطا
+                let errorType = 'خطای نامشخص';
+                let solutions = [];
+                
+                if (error.message.includes('Failed to fetch') || error.message.includes('NetworkError')) {
+                    errorType = 'خطای اتصال (CORS یا شبکه)';
+                    solutions = [
+                        '<strong>راه‌حل 1 - فعال کردن CORS در n8n:</strong><br>' +
+                        '1. وارد n8n شوید<br>' +
+                        '2. به Settings → Security بروید<br>' +
+                        '3. گزینه "CORS" را فعال کنید<br>' +
+                        '4. یا در فایل .env این خط را اضافه کنید:<br>' +
+                        '<code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 5px;">N8N_CORS_ORIGIN=*</code>',
+                        
+                        '<strong>راه‌حل 2 - استفاده از Production URL:</strong><br>' +
+                        'اگر از n8n.cloud استفاده می‌کنید، مطمئن شوید از Production URL استفاده می‌کنید نه Test URL',
+                        
+                        '<strong>راه‌حل 3 - بررسی آدرس:</strong><br>' +
+                        'آدرس webhook باید به این صورت باشد:<br>' +
+                        '<code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 5px;">https://azizizahra.app.n8n.cloud/webhook/crm-agent-step1</code>',
+                        
+                        '<strong>راه‌حل 4 - استفاده از Proxy:</strong><br>' +
+                        'می‌توانید از یک CORS proxy استفاده کنید (برای تست)'
+                    ];
+                } else if (error.message.includes('404')) {
+                    errorType = 'Webhook پیدا نشد';
+                    solutions = [
+                        '1. مطمئن شوید workflow در n8n فعال است (Active)<br>' +
+                        '2. آدرس webhook را دوباره بررسی کنید<br>' +
+                        '3. مطمئن شوید path webhook صحیح است'
+                    ];
+                } else if (error.message.includes('401') || error.message.includes('403')) {
+                    errorType = 'خطای دسترسی';
+                    solutions = [
+                        '1. بررسی کنید که workflow public است<br>' +
+                        '2. یا authentication را در webhook تنظیم کنید'
+                    ];
+                } else {
+                    solutions = [
+                        '1. مطمئن شوید workflow در n8n فعال است (Active)<br>' +
+                        '2. آدرس webhook را بررسی کنید<br>' +
+                        '3. لاگ‌های n8n را بررسی کنید<br>' +
+                        '4. مطمئن شوید n8n در حال اجرا است'
+                    ];
+                }
+                
+                resultDiv.innerHTML = `
+                    <strong>❌ ${errorType}</strong><br><br>
+                    <strong>جزئیات خطا:</strong><br>
+                    <code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 5px; color: #ff6b6b;">${error.message}</code><br><br>
+                    ${solutions.map((sol, idx) => `<div style="margin-top: 15px; padding: 15px; background: rgba(0,0,0,0.2); border-radius: 10px; border-right: 3px solid rgba(212, 175, 55, 0.5);">${sol}</div>`).join('')}
+                    <div style="margin-top: 20px; padding: 15px; background: rgba(212, 175, 55, 0.1); border-radius: 10px; border: 1px solid rgba(212, 175, 55, 0.3);">
+                        <strong style="color: #d4af37;">💡 نکته مهم:</strong><br>
+                        <strong>نیازی به اجرای دستی workflow نیست!</strong> فقط باید workflow در n8n فعال (Active) باشد. 
+                        با کلیک روی دکمه، workflow به صورت خودکار اجرا می‌شود.
+                    </div>
+                    <div style="margin-top: 15px; font-size: 0.9em; color: #999;">
+                        <strong>آدرس webhook شما:</strong><br>
+                        <code style="background: rgba(0,0,0,0.3); padding: 5px; border-radius: 5px;">${webhookUrl}</code>
+                    </div>
+                `;
+                outputDiv.style.display = 'none';
+            } finally {
+                btn.disabled = false;
+                btnText.textContent = '🚀 اجرای Workflow';
+            }
+        });
+        
+        // تابع برای فرمت کردن داده‌ها
+        function formatData(obj, level = 0) {
+            if (obj === null || obj === undefined) {
+                return '<span style="color: #999;">null</span>';
+            }
+            
+            if (typeof obj === 'string' || typeof obj === 'number' || typeof obj === 'boolean') {
+                return `<span style="color: #d4af37;">${obj}</span>`;
+            }
+            
+            if (Array.isArray(obj)) {
+                return obj.map((item, index) => 
+                    `<div style="margin-right: ${level * 20}px; margin-top: 5px;">
+                        <span style="color: #c0c0c0;">[${index}]:</span> ${formatData(item, level + 1)}
+                    </div>`
+                ).join('');
+            }
+            
+            if (typeof obj === 'object') {
+                return Object.entries(obj).map(([key, value]) => 
+                    `<div style="margin-right: ${level * 20}px; margin-top: 5px;">
+                        <span style="color: #d4af37;">${key}:</span> ${formatData(value, level + 1)}
+                    </div>`
+                ).join('');
+            }
+            
+            return String(obj);
+        }
+        
+        // اضافه کردن انیمیشن به input
+        document.getElementById('webhookUrl').addEventListener('focus', function() {
+            this.style.borderColor = 'rgba(212, 175, 55, 0.6)';
+            this.style.boxShadow = '0 0 20px rgba(212, 175, 55, 0.3)';
+        });
+        
+        document.getElementById('webhookUrl').addEventListener('blur', function() {
+            this.style.borderColor = 'rgba(212, 175, 55, 0.3)';
+            this.style.boxShadow = 'none';
+        });
+    </script>
+</body>
+</html>
+
